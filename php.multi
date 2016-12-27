@@ -180,7 +180,7 @@ __validate()
 			    IFS="/"
 			    chunk=($line)
 			    IFS=$OIFS
-			    echo $2/${chunk[2]}
+			    echo ${chunk[2]}
 			    return 0
 			fi
 		done <<< "$branches"
@@ -248,7 +248,7 @@ __checkout()
 		cd $BUILD/$1/$2/$3
 
         git fetch
-		git pull -ff origin $BRANCH
+		git pull -ff $UPSTREAM $BRANCH
 		
 		if [ $? != 0 ]; then
 			__error "Update of $1 in $BUILD/$1/$2/$3 failed, update did not complete"
